@@ -75,35 +75,43 @@ class SpringBootDataDynamoApplicationTests {
 		
 	
 	@Test
-	public void createUsers()
-	{
-		
-		User test = new User("John", "Smith");
-		repository.save(test);
-		
-		List<User> allUsers = (List<User>) repository.findAll();
-		
-		assertThat(allUsers.size(), equalTo(1));
-		
-		log.info("Found in table {}", allUsers.toString());
-		
-		
-	}
-	
-
-	
-	@Test
 	public void sampleTestCase() {
-		User gosling = new User("James", "Gosling");
+		User gosling = new User("James", "Gosling",10);
 		repository.save(gosling);
 
-		User hoeller = new User("Juergen", "Hoeller");
+		User smith = new User("John", "Smith",10);
+		repository.save(smith);
+
+		User hoeller = new User("Juergen", "Hoeller",30);
 		repository.save(hoeller);
 
-		List<User> result = repository.findByLastName("Gosling");
-		assertThat(result.size(), equalTo(1));
+		List<User> result;
+
+		result = (List<User>) repository.findAll();
+		assertThat(result.size(), equalTo(3));
+		log.info("Found in table {}", result.toString());
 		
+		
+		result = repository.findByLastName("Gosling");
+		assertThat(result.size(), equalTo(1));
 		log.info("Found in table: {}", result.get(0));
+		
+		result = repository.findByAgeGreaterThan(10);
+		assertThat(result.size(), equalTo(1));
+		log.info("Found in table: {}", result.get(0));
+				
+		result = repository.findByAgeGreaterThanAndLastNameContaining(10, "ell");
+		assertThat(result.size(), equalTo(1));
+		log.info("Found in table: {}", result.get(0));
+		
+		result = repository.findByAgeNotNull();
+		assertThat(result.size(), equalTo(3));
+		log.info("Found in table: {}", result.get(0));
+		
+		result = repository.findByAgeAndFirstNameStartsWith(10,"Jo");
+		assertThat(result.size(), equalTo(1));
+		log.info("Found in table: {}", result.get(0));
+		
 	}
 
 	

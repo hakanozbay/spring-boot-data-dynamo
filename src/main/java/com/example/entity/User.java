@@ -14,14 +14,16 @@ public class User {
 	
 	private String firstName;
 	private String lastName;
+	private int age;
 
 	public User() {
 		// Default constructor is required by AWS DynamoDB SDK
 	}
 
-	public User(String firstName, String lastName) {
+	public User(String firstName, String lastName, int age) {
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.age = age;
 	}
 
 	public String getId() {
@@ -38,6 +40,11 @@ public class User {
 		return lastName;
 	}
 	
+	@DynamoDBAttribute
+	public int getAge() {
+		return age;
+	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -48,6 +55,10 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 
 	@Override
