@@ -26,15 +26,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>io.github.boostchicken</groupId>
-			<artifactId>spring-data-dynamodb</artifactId>
-			<version>5.2.5</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>DynamoDBLocal</artifactId>
 			<version>[1.12,2.0)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.boostchicken</groupId>
+			<artifactId>spring-data-dynamodb</artifactId>
+			<version>5.2.5</version>
 		</dependency>
 
 		<dependency>
