@@ -58,7 +58,7 @@
 				<executions>
 					<execution>
 						<id>copy</id>
-						<phase>test-compile</phase>
+						<phase>compile</phase>
 						<goals>
 							<goal>copy-dependencies</goal>
 						</goals>
